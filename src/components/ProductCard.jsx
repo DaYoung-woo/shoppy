@@ -3,22 +3,17 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import { Resize } from "@cloudinary/url-gen/actions";
 const cldInstance = new Cloudinary({ cloud: { cloudName: "deswq5l3g" } });
 
-export default function ProductCard() {
-  const [imgUrl, setImgUrl] = useState("");
+export default function ProductCard({ imgUrl }) {
+  const [img, setImg] = useState("");
 
   useEffect(() => {
-    const img = cldInstance
-      .image(
-        "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/2_vzeqix.webp"
-      )
-      .setDeliveryType("fetch")
-      .resize(Resize.fill().width(100).height(150));
-    setImgUrl(img.toURL());
-  }, []);
+    const loadImg = cldInstance.image(imgUrl).setDeliveryType("fetch");
+    setImg(loadImg.toURL());
+  }, [imgUrl]);
 
   return (
-    <div>
-      <img src={imgUrl} alt="test" />
-    </div>
+    <li>
+      <img src={img} alt="test" />
+    </li>
   );
 }
