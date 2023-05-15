@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   HiOutlineShoppingBag,
@@ -7,7 +7,14 @@ import {
 } from "react-icons/hi";
 
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  setPersistence,
+  browserSessionPersistence,
+  signOut,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCN3l95NkwZruKtlYEpeP8gzewkD_jLBc0",
@@ -28,41 +35,46 @@ const provider = new GoogleAuthProvider(app);
 
 const auth = getAuth();
 
-export default function Header() {
-  const logout = () => {};
+export default function Header({ cartList }) {
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        localStorage.clear();
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   const [token, setToken] = useState(() => {
     const localToken = localStorage.getItem("accessToken");
     return localToken || "";
   });
   const [user, setUser] = useState(() => {
     const localUser = JSON.parse(localStorage.getItem("user"));
-    console.log(localUser);
     return localUser || "";
   });
+
   const openPopup = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        localStorage.setItem("accessToken", token);
-        setToken(token);
-        // The signed-in user info.
-        const user = result.user;
-        localStorage.setItem("user", JSON.stringify(user));
-        setUser(user);
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+    setPersistence(auth, browserSessionPersistence)
+      .then(() => {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            setToken(token);
+            localStorage.setItem("accessToken", token);
+
+            const user = result.user;
+            setUser(user);
+            localStorage.setItem("user", JSON.stringify(user));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        console.log(error);
       });
   };
 
@@ -74,7 +86,9 @@ export default function Header() {
       </Link>
 
       <div className="flex items-center text-lg">
-        <Link to="/products">Products</Link>
+        <Link to="/products" className="text-base">
+          PRODUCTS
+        </Link>
         <HiOutlineShoppingCart className="ml-2 text-2xl" />
         <HiOutlinePencil className="ml-2 text-2xl" />
         {token && user && (
@@ -92,7 +106,7 @@ export default function Header() {
             onClick={openPopup}
             className="ml-3 px-5 pb-1 rounded-xl border border-brand text-brand"
           >
-            LogIn
+            LOGIN
           </button>
         )}
         {token && user && (
@@ -100,7 +114,7 @@ export default function Header() {
             onClick={logout}
             className="ml-3 px-5 pb-1 rounded-xl border border-brand text-brand"
           >
-            Logout
+            LOGOUT
           </button>
         )}
       </div>

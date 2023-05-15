@@ -4,9 +4,20 @@ export default class Api {
   }
 
   getProductList(category) {
-    return this.apiClient.getProductList().then(({ data }) => {
-      return category ? data.filter((el) => el.category === category) : data;
-    });
+    return this.apiClient
+      .getProductList()
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          return category
+            ? snapshot.val().filter((el) => el.category === category)
+            : snapshot.val();
+        } else {
+          return [];
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   getProductDetail(id) {
