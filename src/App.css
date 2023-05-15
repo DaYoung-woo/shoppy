@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+  @apply w-full max-w-screen-2xl;
+  margin: 0 auto;
+}
+
+.App {
+  @apply items-center;
+}

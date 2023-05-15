@@ -1,23 +1,52 @@
 [
   {
-    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/2_vzeqix.webp"
+    "id": 1,
+    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/2_vzeqix.webp",
+    "name": "블랙 프린트 코튼 스윗셔츠",
+    "price": "50000",
+    "category": "상의",
+    "desc": "설명"
   },
   {
-    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/3_izvv9a.webp"
+    "id": 2,
+    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/3_izvv9a.webp",
+    "name": "GOLD COTTON TWEED 드레스",
+    "price": "120000",
+    "desc": "원피스"
   },
   {
-    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/4_tia9rs.webp"
+    "id": 3,
+    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/4_tia9rs.webp",
+    "name": "GOLD COTTON TWEED 쇼츠",
+    "price": "50000",
+    "desc": "바지"
   },
   {
-    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/5_avj97j.webp"
+    "id": 4,
+    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/5_avj97j.webp",
+    "name": "스프라이트 니트 셔츠",
+    "price": "50000",
+    "desc": "상의"
   },
   {
-    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/6_j9212s.webp"
+    "id": 5,
+    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/6_j9212s.webp",
+    "name": "스트래치 비츠코스 드레스",
+    "price": "50000",
+    "desc": "원피스"
   },
   {
-    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/7_rml4sa.webp"
+    "id": 6,
+    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/7_rml4sa.webp",
+    "name": "프린트 투포켓 자켓",
+    "price": "50000",
+    "category": "아우터"
   },
   {
-    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/1_e9lh6e.webp"
+    "id": 7,
+    "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/1_e9lh6e.webp",
+    "name": "핑크 프린트 코튼 스윗셔츠",
+    "price": "50000",
+    "desc": "상의"
   }
 ]

@@ -8,4 +8,10 @@ export default class Api {
       return data;
     });
   }
+
+  getProductDetail(id) {
+    return this.apiClient.getProductDetail({ id }).then(({ data }) => {
+      return data;
+    });
+  }
 }

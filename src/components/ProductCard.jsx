@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Cloudinary } from "@cloudinary/url-gen";
-import { Resize } from "@cloudinary/url-gen/actions";
 const cldInstance = new Cloudinary({ cloud: { cloudName: "deswq5l3g" } });
 
-export default function ProductCard({ imgUrl }) {
+export default function ProductCard({ product }) {
   const [img, setImg] = useState("");
 
   useEffect(() => {
-    const loadImg = cldInstance.image(imgUrl).setDeliveryType("fetch");
+    const loadImg = cldInstance.image(product.img).setDeliveryType("fetch");
     setImg(loadImg.toURL());
-  }, [imgUrl]);
+  }, [product]);
+
+  const navigate = useNavigate();
 
   return (
-    <li>
-      <img src={img} alt="test" />
+    <li onClick={() => navigate(`/product/${product.id}`)}>
+      <img src={img} alt={product.name} className="product-img" />
+      <div className="flex justify-between pt-2 px-1">
+        <h6 className="text-sm font-bold">{product.name}</h6>
+        <h6 className="text-sm font-bold">{product.price} \</h6>
+      </div>
+      <pre className="text-xs pt-1 px-1">여성</pre>
     </li>
   );
 }
