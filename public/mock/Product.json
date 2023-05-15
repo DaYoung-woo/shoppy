@@ -3,6 +3,7 @@
   "img": "https://res.cloudinary.com/deswq5l3g/image/upload/v1683983071/mock/2_vzeqix.webp",
   "name": "블랙 프린트 코튼 스윗셔츠",
   "price": "50000",
-  "category": "여성",
-  "desc": "설명"
+  "category": "상의",
+  "desc": "'WE ALL HAVE SECRET MESSAGES HIDDEN WITHIN US' 문구가 쓰여있는 블랙 후드",
+  "option": ["XS", "S", "M", "L", "XL"]
 }

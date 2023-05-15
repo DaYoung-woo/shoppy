@@ -2,11 +2,14 @@ import React from "react";
 import ProductCard from "../components/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import { useApi } from "../context/ApiContext";
+import { useParams } from "react-router-dom";
 
 export default function ProductList() {
   const { api } = useApi();
-  const { isLoading, data: products } = useQuery(["getProductList", ""], () =>
-    api.getProductList()
+  const { category } = useParams();
+  const { isLoading, data: products } = useQuery(
+    ["getProductList", category],
+    () => api.getProductList(category)
   );
 
   return (

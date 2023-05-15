@@ -3,9 +3,9 @@ export default class Api {
     this.apiClient = apiClient;
   }
 
-  getProductList() {
+  getProductList(category) {
     return this.apiClient.getProductList().then(({ data }) => {
-      return data;
+      return category ? data.filter((el) => el.category === category) : data;
     });
   }
 
