@@ -7,6 +7,7 @@ import App from "./App";
 import ProductList from "./views/ProductList";
 import Error from "./views/Error";
 import ProductDetail from "./views/ProductDetail";
+import UploadProduct from "./views/UploadProduct";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <ProductDetail />,
+      },
+      {
+        path: "/product/upload",
+        element: <UploadProduct />,
       },
     ],
   },

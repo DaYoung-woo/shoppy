@@ -62,7 +62,7 @@ export default function Header({ cartList }) {
   };
 
   return (
-    <header className="flex items-center justify-between p-2 border-b-2 ">
+    <header className="flex items-center justify-between p-2 border-b ">
       <Link to="/" className="flex items-center font-sans text-brand">
         <HiOutlineShoppingBag className="text-2xl" />
         <span className="text-2xl font-thin">Shoppy</span>
@@ -75,8 +75,13 @@ export default function Header({ cartList }) {
         {token && user && (
           <>
             <HiOutlineShoppingCart className="ml-2 text-2xl" />
+
             {cartList.length}
-            {isAdmin && <HiOutlinePencil className="ml-2 text-2xl" />}
+            {isAdmin && (
+              <Link to="/product/upload">
+                <HiOutlinePencil className="ml-2 text-2xl" />
+              </Link>
+            )}
             <span className="text-base items-center ml-2">
               <img
                 src={user.photoURL}
