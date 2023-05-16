@@ -25,4 +25,27 @@ export default class Api {
       return data;
     });
   }
+
+  getAdminList() {
+    return this.apiClient
+      .getAdminList()
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          return snapshot.val();
+        } else {
+          return [];
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  openLoginPopup() {
+    return this.apiClient.openLoginPopup();
+  }
+
+  signOut() {
+    return this.apiClient.logOut();
+  }
 }
