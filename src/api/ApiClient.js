@@ -1,12 +1,13 @@
 import axios from "axios";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
 } from "firebase/auth";
+import { v4 as uuidv4 } from "uuid";
 
 export default class ApiClient {
   constructor() {
@@ -50,6 +51,9 @@ export default class ApiClient {
     return signOut(this.auth);
   }
 
+  addProduct(param) {
+    return set(ref(this.db, "productList/" + uuidv4()), param);
+  }
   // addUserCart(params) {
   //   set(ref(this.db, "users/" + params.userId), params);
   // }

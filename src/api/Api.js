@@ -48,4 +48,8 @@ export default class Api {
   signOut() {
     return this.apiClient.logOut();
   }
+
+  addProduct(param) {
+    return this.apiClient.addProduct(param);
+  }
 }
